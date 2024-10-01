@@ -1,0 +1,28 @@
+<%- include('partials/header.ejs') %>
+<div class="content content-preview">
+    <header>
+        <h2 class="hero">Add a New Book</h2>
+        <div class="instruction"><p>Password will be required </p></div>
+    </header>
+    <form class="addform" action="/add" method="post">
+        <label for="title">Enter the Book title / name</label>
+        <input type="text" name="title" id="title" required>
+        <label for="auther">Enter name of the auther</label>
+        <input type="text" name="auther" id="auther" required>
+        <label for="isbn">Enter Book's ISBN ID.</label>
+        <input type="text" inputmode="numeric"placeholder="Number Only" name="isbn" id="isbn">
+        <label for="rating">Enter Book's Rating.</label>
+        <input type="text" inputmode="numeric"placeholder="Number Only" name="rating" id="rating">
+        <label for="dateread">Enter date when you readed the book</label>
+        <input type="date" name="dateread" id="dateread" required>
+        <label for="description">Provide a description about the book</label>
+        <textarea name="description" id="description" rows="5"></textarea>
+        <label for="password">Enter Password</label>
+        <input type="password" name="password" id="password" placeholder="Admin Password" required>
+        <button type="submit" id="submit">ADD</button>
+    </form>
+    <div class="btns">
+        <a class="back" href="/"><button  id="cancel-edit">Cancel</button></a>
+      </div>
+</div>
+<%- include('partials/footer.ejs') %>

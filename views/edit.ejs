@@ -1,0 +1,19 @@
+<%- include('partials/header.ejs') %>
+<div class="content content-preview">
+    <header>
+        <h2 class="hero">Edit About Book</h2>
+        <div class="instruction"><p>Only Admin User Can Do this !</p></div>
+    </header>
+    <form class="addform" action="/edit" method="post">
+        <input type="hidden" name="bookid" value="<%= book.id %>" >
+        <label for="password">Enter Password</label>
+        <input type="password" name="password" id="password" placeholder="Password" required>
+        <label for="description">Update description about the book</label>
+        <textarea name="description"  id="description" rows="15"><%= book.note %></textarea>
+        <button type="submit" id="submit">UPDATE</button>
+    </form>
+    <div class="btns">
+        <a class="back" href="/"><button  id="cancel-edit">Cancel</button></a>
+      </div>
+</div>
+<%- include('partials/footer.ejs') %>

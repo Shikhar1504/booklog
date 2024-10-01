@@ -1,0 +1,18 @@
+<%- include('partials/header.ejs') %>
+<div class="remove-page content-preview">
+    <header>
+        <h2 class="hero">Confirm to Delete </h2>
+        <div class="instruction"><p>"<%= book.title %>"<p></div>
+    </header>
+    <form class="addform delete-form" action="/delete" method="post">
+        <input type="hidden" name="bookid" value="<%= book.id %>" >
+        <label for="password">Enter Password</label>
+        <input type="password" name="password" id="password" placeholder="Password" required>
+        <button class="delete-btn" type="submit" id="submit-delete">DELETE</button>
+   
+    </form>
+    <div class="btns">
+        <a class="back" href="/"><button  id="cancel-delete">Cancel</button></a>
+      </div>
+</div>
+<%- include('partials/footer.ejs') %>
