@@ -28,8 +28,20 @@ env.config();
 //});
 
 // connecting to the remote database
-const db = new pg.Client({connectionString: process.env.POSTGRES_URL})
-db.connect();
+const db = new pg.Client({
+  connectionString: process.env.POSTGRES_URL,
+  ssl: {
+    rejectUnauthorized: false // Set to true if you're using valid SSL certificates
+  }
+
+});
+db.connect()
+.then(() => {
+  console.log('Connected to PostgreSQL');
+})
+.catch(err => {
+  console.error('Connection error', err.stack);
+});
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static("public"));
