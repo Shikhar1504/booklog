@@ -614,5 +614,7 @@ opacity: 0.8;
     .content-preview{
       height: 120vh;
     }
-    
+    #view-date{
+      font-size: 16px;
+    }
   }
