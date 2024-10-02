@@ -6,6 +6,7 @@ import path from 'path';  // Import the path module
 import { fileURLToPath } from 'url';
 import { dirname } from 'path';
 import  env  from "dotenv";
+import dotenv from "dotenv";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
@@ -13,7 +14,7 @@ const __dirname = dirname(__filename);
 const app = express();
 const port = 3000;
 
-
+dotenv.config();
 env.config();
 
 
@@ -93,18 +94,18 @@ app.get("/addbook", (req, res) => {
 
 // this route handles the add request which comes from /add route
 app.post("/add", async (req, res) => {
-  console.log("Password from environment:", process.env.password);
+  console.log("Password from environment:", process.env.PASSWORD);
   console.log("Request Body:", req.body);
   const title = req.body.title 
-  const author= req.body.author;
+  const author= req.body.auther;
   const date = req.body.dateread;
   const note = req.body.description;
   const rating=req.body.rating;
   const isbn = req.body.isbn;
   const password = req.body.password;
   
-  console.log(process.env.password)
-  if (password == process.env.password){  // only if password is correct then any data will be added to database
+  console.log(process.env.PASSWORD)
+  if (password == process.env.PASSWORD){  // only if password is correct then any data will be added to database
   try {
     await db.query(
       "INSERT INTO book (title, author, isbn,rating,days, description) VALUES ($1, $2, $3, $4,$5,$6)",
