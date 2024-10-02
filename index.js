@@ -31,6 +31,8 @@ env.config();
 // connecting to the remote database
 const db = new pg.Client({
   connectionString: process.env.POSTGRES_URL,
+  connectionTimeoutMillis: 20000, // Increase connection timeout to 20 seconds
+  idleTimeoutMillis: 30000,
   ssl: {
     rejectUnauthorized: false // Set to true if you're using valid SSL certificates
   }
@@ -72,7 +74,6 @@ async function getAllBookss() {
 }
 // home route landing page 
 app.get("/", async (req, res) => {
-  console.log("Environment Variables:", process.env);
 
   let data = await getAllBooks();
   res.render("index.ejs", { books: data.rows });
@@ -98,8 +99,6 @@ app.get("/addbook", (req, res) => {
 
 // this route handles the add request which comes from /add route
 app.post("/add", async (req, res) => {
-  console.log("Password from environment:", process.env.PASSWORD);
-  console.log("Request Body:", req.body);
   const title = req.body.title 
   const author= req.body.auther;
   const date = req.body.dateread;
