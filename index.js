@@ -93,6 +93,8 @@ app.get("/addbook", (req, res) => {
 
 // this route handles the add request which comes from /add route
 app.post("/add", async (req, res) => {
+  console.log("Password from environment:", process.env.password);
+  console.log("Request Body:", req.body);
   const title = req.body.title 
   const author= req.body.author;
   const date = req.body.dateread;
