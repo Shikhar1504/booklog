@@ -50,7 +50,6 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
 
-console.log("Environment Variables:", process.env);
 
 
 // function to retrive all books in a formatted manner
@@ -73,6 +72,8 @@ async function getAllBookss() {
 }
 // home route landing page 
 app.get("/", async (req, res) => {
+  console.log("Environment Variables:", process.env);
+
   let data = await getAllBooks();
   res.render("index.ejs", { books: data.rows });
 });
