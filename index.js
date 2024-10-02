@@ -137,7 +137,7 @@ app.post("/edit", async (req, res) => {
   const note = req.body.description;
   const id = req.body.bookid;
   const password = req.body.password;
-  if (password == process.env.password){  // until password doesn't match no changes will happen to the database
+  if (password == process.env.PASSWORD){  // until password doesn't match no changes will happen to the database
   try {
     await db.query(
       "UPDATE book SET description = $1 WHERE id = $2",
@@ -165,7 +165,7 @@ app.get('/delete/:title', async(req, res)=>{
 app.post("/delete", async (req, res) => {
   const id = req.body.bookid;
   const password = req.body.password;
-  if (password == process.env.password){  // until unless password is unmatched nothing will be deleted
+  if (password == process.env.PASSWORD){  // until unless password is unmatched nothing will be deleted
   try {
     await db.query(
       "DELETE FROM book WHERE id = $1",
